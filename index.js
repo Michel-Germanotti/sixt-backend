@@ -17,23 +17,19 @@ app.use(cors());
 const locationsRoutes = require('./routes/locations');
 app.use(locationsRoutes);
 
-
-
-
 // Route accueil
 app.get("/", (req, res) => {
     try {
-        console.log('fuck');
-        req.status(200).json(responseSixt);
+        req.status(200).json();
     } catch (error) {
         res.status(400).json({error: message});
     }
   });
 
+app.get("*", (req, res) => {
+    res.status(400).json({message : "Oups le michigan c'est pas par là 🖖"});
+})
 
-
-
-  
 // Lancement du serveur
 app.listen(process.env.PORT, () => {
     console.log("Server started 🚀 on the port :", process.env.PORT);

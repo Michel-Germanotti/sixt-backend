@@ -11,6 +11,7 @@ router.get("/locations", async (req, res) => {
     const q = req.query.q;
     
     try {
+        // J'envoi ma requête
         const response = await axios.get(`https://lereacteur-bootcamp-api.herokuapp.com/api/sixt/locations`, {
             headers: {
             'Authorization': `Bearer ${token}` 
@@ -44,6 +45,7 @@ router.get("/rentaloffers", async (req, res) => {
     const returnDate = req.query.returnDate;
 
     try {
+        // J'envoi ma requête
         const response = await axios.get(`https://lereacteur-bootcamp-api.herokuapp.com/api/sixt/rentaloffers`, {
             headers: {
             'Authorization': `Bearer ${token}` 
@@ -64,14 +66,15 @@ router.post('/rentalconfigurations/create', async (req, res) => {
 
     const token = process.env.API_KEY;
 
-    const test = {offerId: req.body.offerId};
-    console.log(test);
+    // Je récupère le contenu du body
+    const offerId = {offerId: req.body.offerId};
 
     try {
-        const response = await axios.post(`https://lereacteur-bootcamp-api.herokuapp.com/api/sixt/rentalconfigurations/create`, {
+        // J'envoi ma requête
+        const response = await axios.post(`https://lereacteur-bootcamp-api.herokuapp.com/api/sixt/rentalconfigurations/create`, offerId, {
             headers: {
             'Authorization': `Bearer ${token}` 
-            }, params : {offerId: test}
+            }
         }); 
         console.log(response.data);
         res.status(200).json(response.data);
