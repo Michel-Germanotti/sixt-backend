@@ -36,7 +36,7 @@ router.get("/rentaloffers", async (req, res) => {
 
     // Token API
     const token = process.env.API_KEY;
-    console.log(req.query); 
+    // console.log(req.query); 
 
     // Params requête
     const pickupStation = req.query.pickupStation;
@@ -64,6 +64,7 @@ router.get("/rentaloffers", async (req, res) => {
 // Configurations de location
 router.post('/rentalconfigurations/create', async (req, res) => {
 
+    // console.log(req.body);
     const token = process.env.API_KEY;
 
     // Je récupère le contenu du body

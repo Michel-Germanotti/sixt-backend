@@ -1,13 +1,8 @@
 // Permet d'accéder aux variables d'environnement ".env"
 require("dotenv").config();
 const express = require('express');
-const isAuthenticated = require('./middleware/isAuthenticated');
+// const isAuthenticated = require('./middleware/isAuthenticated');
 const cors = require("cors");
-
-// Package permettant de faire des requêtes vers l'API
-const axios = require("axios");
-const { message } = require("prompt");
-
 
 const app = express();
 app.use(express.json());
@@ -27,7 +22,7 @@ app.get("/", (req, res) => {
   });
 
 app.get("*", (req, res) => {
-    res.status(400).json({message : "Oups le michigan c'est pas par là 🖖"});
+    res.status(400).json(`Oups la ${Math.round(Math.random()*100)}ème compagnie c'est pas par là 🖖`);
 })
 
 // Lancement du serveur
